@@ -6,10 +6,6 @@ import os
 def get_article_links(ticker:str):
     html = requests.get(f"https://www.moneycontrol.com/news/tags/{ticker}.html")
     soup = BeautifulSoup(html.text, "html.parser")
-
-    
-    if ticker not in soup.title.text:
-        raise Exception("Invalid ticker")
         
     links = set()
     ul = soup.find("ul", id="cagetory")
@@ -32,15 +28,12 @@ def get_article(link:str):
 def save_all_articles(ticker:str, directory="data"):
 
     if not os.path.exists(directory):
-        os.mkdir(directory)
+        os.makedirs(directory)
 
     links = get_article_links(ticker)
-    for count,link  in enumerate(links):
-        
+    for count,link  in enumerate(links,start=1):
         content = get_article(link)
         if content:
             path = os.path.join(directory, ticker +"_"+  str(count) + ".txt")
             with open(path, "w") as f:
                 f.write(content)
-
-save_all_articles("RELIANCE")

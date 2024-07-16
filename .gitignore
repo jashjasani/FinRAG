@@ -1,4 +1,3 @@
-data/
 flagged/
 venv/
 *.env
