@@ -10,6 +10,9 @@ Financial RAG is a retrieval augmented generation implementation using llama ind
 3) Once we have text data we load it and generate vector embeddings
 4) Finally a query engine is created using indexed documents and llm here we are using google's gemma model which is inferenced on groq 
 
+## Requirements 
+
+Add groq API keys to env file like GROQ_API_KEY = "API_KEY"
 
 ## Installation
 
